@@ -1,0 +1,74 @@
+entity Group {
+  name String
+}
+entity UserGroup {
+  name String,
+  email String
+}
+entity Event {
+  type String,
+  name String,
+  date ZonedDateTime,
+  subject String,
+  message String
+}
+entity Notification {
+  send Boolean
+}
+
+entity Card {
+  name String,
+  type String,
+  number String
+}
+entity Record {
+  name String,
+  date ZonedDateTime,
+  total Double,
+}
+entity RecordDetail {
+  description String,
+  quantity Integer,
+  price Double,
+  total Double
+}
+entity RecordPayment {
+  pay Double,
+  acceptPayment Boolean
+}
+////////////////////////////////////////////////////////////
+relationship OneToMany {
+  User{group} to Group
+}
+relationship OneToMany {
+  Group{userGroup} to UserGroup
+}
+relationship OneToMany {
+  User{event} to Event
+}
+relationship OneToMany {
+  User{notification} to Notification,
+  Group{notification} to Notification,
+  Event{notification} to Notification
+}
+relationship OneToMany {
+  User{card} to Card
+}
+relationship OneToMany {
+  User{record} to Record
+}
+relationship OneToMany {
+  Record{recordDetail} to RecordDetail
+}
+relationship OneToMany {
+  Record{recordPayment} to RecordPayment,
+  Card{recordPayment} to RecordPayment,
+  User{recordPayment} to RecordPayment
+}
+
+// Set service options to all except few
+//service all with serviceImpl
+service all with serviceClass
+
+ 
+
