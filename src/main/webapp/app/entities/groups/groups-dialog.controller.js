@@ -13,12 +13,11 @@
         vm.groups = entity;
         vm.clear = clear;
         vm.save = save;
-        // vm.add  = function () {
-        //     console.log('add');
-        //     vm.userGroups.push({name:'',email:''});
-        // };
-        // vm.usergroups = UserGroup.query();
-        UserGroup.query({idgroups: 4}, function(result) {
+        vm.add  = function () {
+            console.log('add');
+            vm.userGroups.push({name:'',email:''});
+        };
+        UserGroup.query({idgroups: vm.groups.id}, function(result) {
             vm.userGroups = result;
             console.log(result);
         });

@@ -5,6 +5,7 @@ import com.noctem.domain.Groups;
 import com.noctem.domain.User;
 import com.noctem.domain.UserGroup;
 import com.noctem.repository.GroupsRepository;
+import com.noctem.repository.UserGroupRepository;
 import com.noctem.security.AuthoritiesConstants;
 import com.noctem.security.SecurityUtils;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,7 +22,6 @@ import java.util.Set;
  * Service Implementation for managing Groups.
  */
 @Service
-@Transactional
 public class GroupsService {
 
     private final Logger log = LoggerFactory.getLogger(GroupsService.class);
@@ -31,6 +32,8 @@ public class GroupsService {
     private UserService userService;
     @Inject
     private UserGroupService userGroupService;
+    @Inject
+    private UserGroupRepository userGroupRepository;
 
     /**
      * Save a groups.
@@ -38,26 +41,26 @@ public class GroupsService {
      * @param groups the entity to save
      * @return the persisted entity
      */
+    @Transactional
     public Groups save(Groups groups) {
         log.debug("Request to save Groups : {}", groups);
-        Groups result = null;
-        try {
-            Groups group  = new Groups();
-            group.setId(groups.getId());
-            group.setName(groups.getName());
-            group.setUser(groups.getUser());
-            result = groupsRepository.save(group);
-            Set<UserGroup> userGroupSet = groups.getUserGroups();
-            for (UserGroup userGroup : userGroupSet) {
-                userGroup.setGroups(result);
-                userGroupService.save(userGroup);
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
+        /*Groups result = null;
+        Set<UserGroup> userGroupSet = new HashSet<UserGroup>();
+        for (UserGroup userGroup : groups.getUserGroups()) {
+            UserGroup userGroup1 = new UserGroup();
+            userGroup1.setId(userGroup.getId());
+            userGroup1.setName(userGroup.getName());
+            userGroup1.setEmail(userGroup.getEmail());
+            userGroup1.setGroups(groups);
+            userGroupSet.add(userGroup1);
         }
-
-        return result;
+        groups.setUserGroups(userGroupSet);
+        result = groupsRepository.save(groups);
+        return result;*/
+        for (UserGroup userGroup : groups.getUserGroups()) {
+            userGroup.setGroups(groups);
+        } 
+        return groupsRepository.save(groups);
     }
 
     /**
@@ -116,6 +119,8 @@ public class GroupsService {
      *
      *  @param id the id of the entity
      */
+
+    @Transactional
     public void delete(Long id) {
         log.debug("Request to delete Groups : {}", id);
         groupsRepository.delete(id);
