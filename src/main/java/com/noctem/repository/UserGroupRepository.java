@@ -1,5 +1,6 @@
 package com.noctem.repository;
 
+import com.noctem.domain.Groups;
 import com.noctem.domain.UserGroup;
 
 import org.springframework.data.jpa.repository.*;
@@ -11,5 +12,6 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface UserGroupRepository extends JpaRepository<UserGroup,Long> {
+    List<UserGroup> findByGroupsId(Long idGroups);
 
 }

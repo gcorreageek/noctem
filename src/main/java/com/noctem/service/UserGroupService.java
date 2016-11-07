@@ -18,7 +18,7 @@ import java.util.List;
 public class UserGroupService {
 
     private final Logger log = LoggerFactory.getLogger(UserGroupService.class);
-    
+
     @Inject
     private UserGroupRepository userGroupRepository;
 
@@ -36,15 +36,19 @@ public class UserGroupService {
 
     /**
      *  Get all the userGroups.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<UserGroup> findAll() {
         log.debug("Request to get all UserGroups");
         List<UserGroup> result = userGroupRepository.findAll();
 
         return result;
+    }
+    @Transactional(readOnly = true)
+    public List<UserGroup> findByGroupsId(Long idGroups) {
+        return userGroupRepository.findByGroupsId(idGroups);
     }
 
     /**
@@ -53,7 +57,7 @@ public class UserGroupService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public UserGroup findOne(Long id) {
         log.debug("Request to get UserGroup : {}", id);
         UserGroup userGroup = userGroupRepository.findOne(id);

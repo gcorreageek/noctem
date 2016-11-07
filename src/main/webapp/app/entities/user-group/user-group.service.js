@@ -7,6 +7,8 @@
     UserGroup.$inject = ['$resource'];
 
     function UserGroup ($resource) {
+
+        // var resourceUrl =  'api/user-groups/:idgroups/:id';
         var resourceUrl =  'api/user-groups/:id';
 
         return $resource(resourceUrl, {}, {

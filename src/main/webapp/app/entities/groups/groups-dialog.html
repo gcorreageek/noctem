@@ -24,15 +24,22 @@
                     This field is required.
                 </p>
             </div>
+            <button type="button" class="btn btn-default"  ng-click="vm.add();">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <!--<li ng-repeat="contact in contacts">-->
+                <!--<a href="#/contacts/3" ui-sref="contacts.detail({ id: contact.id })">Bob</a>-->
+            <!--</li>-->
+        </div>
+        <div class="form-group">
+            <table>
+                <tr ng-repeat="ug in vm.usergroups" >
+                    <td><input  class="form-control" ng-model="ug.name" ></td>
+                    <td><input  class="form-control" ng-model="ug.email" ></td>
+                </tr>
+            </table>
         </div>
 
-        <div class="form-group"  >
-            <label data-translate="noctemApp.groups.user" for="field_user">User</label>|{{vm.account}}|
-            <input type="text" class="form-control" name="user" id="field_user" ng-value="vm.groups.user vm.account" ng-model="vm.groups.user"   />
-            <!--<select class="form-control" id="field_user" name="user" ng-model="vm.groups.user" ng-options="user as user.id for user in vm.users track by user.id">
-                <option value=""></option>
-            </select>-->
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

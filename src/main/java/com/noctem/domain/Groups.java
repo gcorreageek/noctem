@@ -1,11 +1,13 @@
 package com.noctem.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Objects;
 
@@ -26,9 +28,13 @@ public class Groups implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "groups")
-    @JsonIgnore
+    @OneToMany(mappedBy = "groups", cascade = {CascadeType.ALL}, orphanRemoval = true)
+//    @JsonIgnore
+    @JsonIgnoreProperties({"groups"})
     private Set<UserGroup> userGroups = new HashSet<>();
+//    @JsonIgnoreProperties({"purchaseRequest"})
+//    @OneToMany(mappedBy = "purchaseRequest", cascade = {CascadeType.ALL}, orphanRemoval = true)
+//    private List<PurchaseRequestItem> purchaseRequestItemList;
 
     @OneToMany(mappedBy = "groups")
     @JsonIgnore

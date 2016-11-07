@@ -20,7 +20,6 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="noctemApp.groups.name">Name</span></th>
-                    <th><span data-translate="noctemApp.groups.user">User</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,9 +27,6 @@
                 <tr ng-repeat="groups in vm.groups track by groups.id">
                     <td><a ui-sref="groups-detail({id:groups.id})">{{groups.id}}</a></td>
                     <td>{{groups.name}}</td>
-                    <td>
-                        {{groups.user.id}}
-                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

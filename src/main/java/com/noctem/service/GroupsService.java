@@ -3,6 +3,7 @@ package com.noctem.service;
 import com.noctem.domain.Authority;
 import com.noctem.domain.Groups;
 import com.noctem.domain.User;
+import com.noctem.domain.UserGroup;
 import com.noctem.repository.GroupsRepository;
 import com.noctem.security.AuthoritiesConstants;
 import com.noctem.security.SecurityUtils;
@@ -28,6 +29,8 @@ public class GroupsService {
     private GroupsRepository groupsRepository;
     @Inject
     private UserService userService;
+    @Inject
+    private UserGroupService userGroupService;
 
     /**
      * Save a groups.
@@ -37,7 +40,23 @@ public class GroupsService {
      */
     public Groups save(Groups groups) {
         log.debug("Request to save Groups : {}", groups);
-        Groups result = groupsRepository.save(groups);
+        Groups result = null;
+        try {
+            Groups group  = new Groups();
+            group.setId(groups.getId());
+            group.setName(groups.getName());
+            group.setUser(groups.getUser());
+            result = groupsRepository.save(group);
+            Set<UserGroup> userGroupSet = groups.getUserGroups();
+            for (UserGroup userGroup : userGroupSet) {
+                userGroup.setGroups(result);
+                userGroupService.save(userGroup);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return result;
     }
 
@@ -72,7 +91,11 @@ public class GroupsService {
             }
             return groups;
         }*/
-        return groupsRepository.findByUserIsCurrentUser();
+        List<Groups> groups = groupsRepository.findByUserIsCurrentUser();
+        for (Groups group : groups) {
+            log.debug("group:"+group.getName());
+        }
+        return groups;
     }
 
     /**

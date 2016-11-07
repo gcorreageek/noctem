@@ -27,7 +27,7 @@ import java.util.Optional;
 public class UserGroupResource {
 
     private final Logger log = LoggerFactory.getLogger(UserGroupResource.class);
-        
+
     @Inject
     private UserGroupService userGroupService;
 
@@ -77,26 +77,20 @@ public class UserGroupResource {
             .body(result);
     }
 
-    /**
-     * GET  /user-groups : get all the userGroups.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of userGroups in body
-     */
-    @RequestMapping(value = "/user-groups",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+
+//    @RequestMapping(value = "/user-groups", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    @Timed
+//    public List<UserGroup> getAllUserGroups() {
+//        log.debug("REST request to get all UserGroups");
+//        return userGroupService.findAll();
+//    }
+    @RequestMapping(value = "/user-groups", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<UserGroup> getAllUserGroups() {
-        log.debug("REST request to get all UserGroups");
-        return userGroupService.findAll();
+    public List<UserGroup> getUserGroupByIdGroups(@RequestParam(value = "idgroups", required = false) Long idgroups) {
+        log.debug("idgroupsidgroupsidgroupsidgroupsidgroupsidgroupsidgroupsidgroups:"+idgroups);
+        return userGroupService.findByGroupsId(idgroups);
     }
 
-    /**
-     * GET  /user-groups/:id : get the "id" userGroup.
-     *
-     * @param id the id of the userGroup to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the userGroup, or with status 404 (Not Found)
-     */
     @RequestMapping(value = "/user-groups/{id}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -111,12 +105,6 @@ public class UserGroupResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    /**
-     * DELETE  /user-groups/:id : delete the "id" userGroup.
-     *
-     * @param id the id of the userGroup to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
     @RequestMapping(value = "/user-groups/{id}",
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)

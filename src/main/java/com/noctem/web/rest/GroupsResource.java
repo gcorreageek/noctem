@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -31,19 +32,22 @@ public class GroupsResource {
     @Inject
     private GroupsService groupsService;
 
-    /**
-     * POST  /groups : Create a new groups.
-     *
-     * @param groups the groups to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new groups, or with status 400 (Bad Request) if the groups has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @RequestMapping(value = "/groups",
-        method = RequestMethod.POST,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+
+//    @PreAuthorize("checkPermission('Purchaserequest','Manager','Create')")
+//    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//    public ResponseEntity<?> save(
+//        @RequestBody  PurchaseRequest  purchaseRequest
+
+    @RequestMapping(value = "/groups", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Groups> createGroups(@Valid @RequestBody Groups groups) throws URISyntaxException {
+    public ResponseEntity<Groups> createGroups( @RequestBody Groups groups) throws URISyntaxException {
         log.debug("REST request to save Groups : {}", groups);
+        if(groups==null){
+            log.debug("es null" );
+        }else{
+            log.debug("size:"+groups.getUserGroups().size());
+        }
+
         if (groups.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("groups", "idexists", "A new groups cannot already have an ID")).body(null);
         }
@@ -53,15 +57,7 @@ public class GroupsResource {
             .body(result);
     }
 
-    /**
-     * PUT  /groups : Updates an existing groups.
-     *
-     * @param groups the groups to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated groups,
-     * or with status 400 (Bad Request) if the groups is not valid,
-     * or with status 500 (Internal Server Error) if the groups couldnt be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+
     @RequestMapping(value = "/groups",
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -77,11 +73,7 @@ public class GroupsResource {
             .body(result);
     }
 
-    /**
-     * GET  /groups : get all the groups.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of groups in body
-     */
+
     @RequestMapping(value = "/groups",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -91,12 +83,7 @@ public class GroupsResource {
         return groupsService.findByAuthority();
     }
 
-    /**
-     * GET  /groups/:id : get the "id" groups.
-     *
-     * @param id the id of the groups to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the groups, or with status 404 (Not Found)
-     */
+
     @RequestMapping(value = "/groups/{id}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
