@@ -30,13 +30,7 @@ public class UserGroup implements Serializable {
     private String email;
 
     @ManyToOne
-    @JsonIgnoreProperties({"userGroups"})
-//    @JoinColumn(name = "ID", nullable = false)
     private Groups groups;
-//    @ManyToOne
-//    @JsonIgnoreProperties({"purchaseRequestItemList"})
-//    @JoinColumn(name = "PURCHASE_REQUEST_ID", nullable = false)
-//    private PurchaseRequest purchaseRequest;
 
     public Long getId() {
         return id;

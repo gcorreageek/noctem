@@ -29,12 +29,8 @@ public class Groups implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "groups", cascade = {CascadeType.ALL}, orphanRemoval = true)
-//    @JsonIgnore
     @JsonIgnoreProperties({"groups"})
     private Set<UserGroup> userGroups = new HashSet<>();
-//    @JsonIgnoreProperties({"purchaseRequest"})
-//    @OneToMany(mappedBy = "purchaseRequest", cascade = {CascadeType.ALL}, orphanRemoval = true)
-//    private List<PurchaseRequestItem> purchaseRequestItemList;
 
     @OneToMany(mappedBy = "groups")
     @JsonIgnore

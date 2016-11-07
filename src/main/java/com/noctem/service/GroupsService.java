@@ -35,39 +35,15 @@ public class GroupsService {
     @Inject
     private UserGroupRepository userGroupRepository;
 
-    /**
-     * Save a groups.
-     *
-     * @param groups the entity to save
-     * @return the persisted entity
-     */
     @Transactional
     public Groups save(Groups groups) {
         log.debug("Request to save Groups : {}", groups);
-        /*Groups result = null;
-        Set<UserGroup> userGroupSet = new HashSet<UserGroup>();
-        for (UserGroup userGroup : groups.getUserGroups()) {
-            UserGroup userGroup1 = new UserGroup();
-            userGroup1.setId(userGroup.getId());
-            userGroup1.setName(userGroup.getName());
-            userGroup1.setEmail(userGroup.getEmail());
-            userGroup1.setGroups(groups);
-            userGroupSet.add(userGroup1);
-        }
-        groups.setUserGroups(userGroupSet);
-        result = groupsRepository.save(groups);
-        return result;*/
         for (UserGroup userGroup : groups.getUserGroups()) {
             userGroup.setGroups(groups);
-        } 
+        }
         return groupsRepository.save(groups);
     }
 
-    /**
-     *  Get all the groups.
-     *
-     *  @return the list of entities
-     */
     @Transactional(readOnly = true)
     public List<Groups> findAll() {
         log.debug("Request to get all Groups");
@@ -76,49 +52,18 @@ public class GroupsService {
     }
     @Transactional(readOnly = true)
     public List<Groups> findByAuthority() {
-        /*Boolean isAdmin = false;
-        Set<Authority> authoritySet =  userService.getUserWithAuthorities().getAuthorities();
-        for (Authority authority : authoritySet) {
-            log.debug("getName():"+authority.getName());
-            if(authority.getName().equals(AuthoritiesConstants.ADMIN)){
-                isAdmin = true;
-                break;
-            }
-        }
-        if(isAdmin){
-            return groupsRepository.findAll();
-        }else{
-            List<Groups> groups = groupsRepository.findByUserIsCurrentUser();
-            for (Groups group : groups) {
-                log.debug("group:"+group.getName());
-            }
-            return groups;
-        }*/
         List<Groups> groups = groupsRepository.findByUserIsCurrentUser();
         for (Groups group : groups) {
             log.debug("group:"+group.getName());
         }
         return groups;
     }
-
-    /**
-     *  Get one groups by id.
-     *
-     *  @param id the id of the entity
-     *  @return the entity
-     */
     @Transactional(readOnly = true)
     public Groups findOne(Long id) {
         log.debug("Request to get Groups : {}", id);
         Groups groups = groupsRepository.findOne(id);
         return groups;
     }
-
-    /**
-     *  Delete the  groups by id.
-     *
-     *  @param id the id of the entity
-     */
 
     @Transactional
     public void delete(Long id) {

@@ -32,22 +32,10 @@ public class GroupsResource {
     @Inject
     private GroupsService groupsService;
 
-
-//    @PreAuthorize("checkPermission('Purchaserequest','Manager','Create')")
-//    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    public ResponseEntity<?> save(
-//        @RequestBody  PurchaseRequest  purchaseRequest
-
     @RequestMapping(value = "/groups", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Groups> createGroups( @RequestBody Groups groups) throws URISyntaxException {
         log.debug("REST request to save Groups : {}", groups);
-        if(groups==null){
-            log.debug("es null" );
-        }else{
-            log.debug("size:"+groups.getUserGroups().size());
-        }
-
         if (groups.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("groups", "idexists", "A new groups cannot already have an ID")).body(null);
         }
@@ -98,12 +86,6 @@ public class GroupsResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    /**
-     * DELETE  /groups/:id : delete the "id" groups.
-     *
-     * @param id the id of the groups to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
     @RequestMapping(value = "/groups/{id}",
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
