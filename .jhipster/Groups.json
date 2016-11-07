@@ -1,0 +1,40 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "userGroup",
+      "otherEntityName": "userGroup",
+      "otherEntityRelationshipName": "groups"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "notification",
+      "otherEntityName": "notification",
+      "otherEntityRelationshipName": "groups"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20161106124949",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "entityTableName": "groups"
+}

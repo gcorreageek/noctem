@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="noctemApp.card.detail.title">Card</span> {{vm.card.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="noctemApp.card.name">Name</span></dt>
+        <dd>
+            <span>{{vm.card.name}}</span>
+        </dd>
+        <dt><span data-translate="noctemApp.card.typeCard">Type Card</span></dt>
+        <dd>
+            <span data-translate="{{'noctemApp.TypeCard.' + vm.card.typeCard}}">{{vm.card.typeCard}}</span>
+        </dd>
+        <dt><span data-translate="noctemApp.card.number">Number</span></dt>
+        <dd>
+            <span>{{vm.card.number}}</span>
+        </dd>
+        <dt><span data-translate="noctemApp.card.user">User</span></dt>
+        <dd>
+            {{vm.card.user.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="card-detail.edit({id:vm.card.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

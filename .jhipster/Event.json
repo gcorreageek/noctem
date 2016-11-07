@@ -1,0 +1,60 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "notification",
+      "otherEntityName": "notification",
+      "otherEntityRelationshipName": "event"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "typeEvent",
+      "fieldType": "TypeEvent",
+      "fieldValues": "LIST,PARTY,EVENTS",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "subject",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "message",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20161106124951",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "entityTableName": "event"
+}

@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="noctemApp.recordItem.detail.title">Record Item</span> {{vm.recordItem.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="noctemApp.recordItem.description">Description</span></dt>
+        <dd>
+            <span>{{vm.recordItem.description}}</span>
+        </dd>
+        <dt><span data-translate="noctemApp.recordItem.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{vm.recordItem.quantity}}</span>
+        </dd>
+        <dt><span data-translate="noctemApp.recordItem.price">Price</span></dt>
+        <dd>
+            <span>{{vm.recordItem.price}}</span>
+        </dd>
+        <dt><span data-translate="noctemApp.recordItem.total">Total</span></dt>
+        <dd>
+            <span>{{vm.recordItem.total}}</span>
+        </dd>
+        <dt><span data-translate="noctemApp.recordItem.record">Record</span></dt>
+        <dd>
+            <a ui-sref="record-detail({id:vm.recordItem.record.id})">{{vm.recordItem.record.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="record-item-detail.edit({id:vm.recordItem.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

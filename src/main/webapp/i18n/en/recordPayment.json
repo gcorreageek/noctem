@@ -1,0 +1,26 @@
+{
+    "noctemApp": {
+        "recordPayment" : {
+            "home": {
+                "title": "Record Payments",
+                "createLabel": "Create a new Record Payment",
+                "createOrEditLabel": "Create or edit a Record Payment",
+                "search": "Search for Record Payment"
+            },
+            "created": "A new Record Payment is created with identifier {{ param }}",
+            "updated": "A Record Payment is updated with identifier {{ param }}",
+            "deleted": "A Record Payment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Record Payment {{ id }}?"
+            },
+            "detail": {
+                "title": "Record Payment"
+            },
+            "pay": "Pay",
+            "acceptPayment": "Accept Payment",
+            "card": "Card",
+            "record": "Record",
+            "user": "User"
+        }
+    }
+}

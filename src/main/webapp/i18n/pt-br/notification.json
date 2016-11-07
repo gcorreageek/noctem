@@ -1,0 +1,25 @@
+{
+    "noctemApp": {
+        "notification" : {
+            "home": {
+                "title": "Notifications",
+                "createLabel": "Criar novo Notification",
+                "createOrEditLabel": "Criar ou editar Notification",
+                "search": "Pesquisar por Notification"
+            },
+            "created": "Um novo Notification é criado com o identificador {{ param }}",
+            "updated": "Um Notification é atualizado com o identificador {{ param }}",
+            "deleted": "Um Notification é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Notification {{ id }}?"
+            },
+            "detail": {
+                "title": "Notification"
+            },
+            "send": "Send",
+            "groups": "Groups",
+            "event": "Event",
+            "user": "User"
+        }
+    }
+}

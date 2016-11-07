@@ -1,0 +1,24 @@
+{
+    "noctemApp": {
+        "userGroup" : {
+            "home": {
+                "title": "User Groups",
+                "createLabel": "Criar novo User Group",
+                "createOrEditLabel": "Criar ou editar User Group",
+                "search": "Pesquisar por User Group"
+            },
+            "created": "Um novo User Group é criado com o identificador {{ param }}",
+            "updated": "Um User Group é atualizado com o identificador {{ param }}",
+            "deleted": "Um User Group é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir User Group {{ id }}?"
+            },
+            "detail": {
+                "title": "User Group"
+            },
+            "name": "Name",
+            "email": "Email",
+            "groups": "Groups"
+        }
+    }
+}

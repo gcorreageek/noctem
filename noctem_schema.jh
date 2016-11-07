@@ -1,54 +1,60 @@
-entity Group {
-  name String
+entity Groups {
+  name String required
 }
 entity UserGroup {
-  name String,
-  email String
+  name String required,
+  email String required
 }
 entity Event {
-  type String,
-  name String,
-  date ZonedDateTime,
+  name String required,
+  typeEvent TypeEvent required,
+  date ZonedDateTime required,
   subject String,
   message String
 }
 entity Notification {
-  send Boolean
+  send Boolean required
 }
 
 entity Card {
-  name String,
-  type String,
-  number String
+  name String required,
+  typeCard TypeCard required,
+  number String required
 }
 entity Record {
-  name String,
-  date ZonedDateTime,
-  total Double,
+  name String required,
+  date ZonedDateTime required,
+  total Double required,
 }
-entity RecordDetail {
-  description String,
-  quantity Integer,
-  price Double,
-  total Double
+entity RecordItem {
+  description String required,
+  quantity Integer required,
+  price Double required,
+  total Double required
 }
 entity RecordPayment {
-  pay Double,
-  acceptPayment Boolean
+  pay Double required,
+  acceptPayment Boolean required
+}
+enum TypeEvent {
+    LIST, PARTY, EVENTS
+}
+enum TypeCard {
+    VISA, MASTERCARD
 }
 ////////////////////////////////////////////////////////////
 relationship OneToMany {
-  User{group} to Group
+  User{groups}  to Groups
 }
 relationship OneToMany {
-  Group{userGroup} to UserGroup
+  Groups{userGroup} to UserGroup
 }
 relationship OneToMany {
   User{event} to Event
 }
 relationship OneToMany {
   User{notification} to Notification,
-  Group{notification} to Notification,
+  Groups{notification} to Notification,
   Event{notification} to Notification
 }
 relationship OneToMany {
@@ -58,7 +64,7 @@ relationship OneToMany {
   User{record} to Record
 }
 relationship OneToMany {
-  Record{recordDetail} to RecordDetail
+  Record{recordItem} to RecordItem
 }
 relationship OneToMany {
   Record{recordPayment} to RecordPayment,

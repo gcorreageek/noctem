@@ -1,0 +1,9 @@
+{
+    "noctemApp": {
+        "TypeCard" : {
+            "null": "",
+            "VISA": "VISA",
+            "MASTERCARD": "MASTERCARD"
+        }
+    }
+}

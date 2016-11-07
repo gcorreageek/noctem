@@ -1,0 +1,26 @@
+{
+    "noctemApp": {
+        "recordItem" : {
+            "home": {
+                "title": "Record Items",
+                "createLabel": "Create a new Record Item",
+                "createOrEditLabel": "Create or edit a Record Item",
+                "search": "Search for Record Item"
+            },
+            "created": "A new Record Item is created with identifier {{ param }}",
+            "updated": "A Record Item is updated with identifier {{ param }}",
+            "deleted": "A Record Item is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Record Item {{ id }}?"
+            },
+            "detail": {
+                "title": "Record Item"
+            },
+            "description": "Description",
+            "quantity": "Quantity",
+            "price": "Price",
+            "total": "Total",
+            "record": "Record"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "noctemApp": {
+        "event" : {
+            "home": {
+                "title": "Events",
+                "createLabel": "Criar novo Event",
+                "createOrEditLabel": "Criar ou editar Event",
+                "search": "Pesquisar por Event"
+            },
+            "created": "Um novo Event é criado com o identificador {{ param }}",
+            "updated": "Um Event é atualizado com o identificador {{ param }}",
+            "deleted": "Um Event é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Event {{ id }}?"
+            },
+            "detail": {
+                "title": "Event"
+            },
+            "name": "Name",
+            "typeEvent": "Type Event",
+            "date": "Date",
+            "subject": "Subject",
+            "message": "Message",
+            "notification": "Notification",
+            "user": "User"
+        }
+    }
+}

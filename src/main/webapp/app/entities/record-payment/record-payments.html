@@ -1,0 +1,70 @@
+<div>
+    <h2 data-translate="noctemApp.recordPayment.home.title">Record Payments</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="record-payment.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="noctemApp.recordPayment.home.createLabel">
+                        Create new Record Payment
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="noctemApp.recordPayment.pay">Pay</span></th>
+                    <th><span data-translate="noctemApp.recordPayment.acceptPayment">Accept Payment</span></th>
+                    <th><span data-translate="noctemApp.recordPayment.card">Card</span></th>
+                    <th><span data-translate="noctemApp.recordPayment.record">Record</span></th>
+                    <th><span data-translate="noctemApp.recordPayment.user">User</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="recordPayment in vm.recordPayments track by recordPayment.id">
+                    <td><a ui-sref="record-payment-detail({id:recordPayment.id})">{{recordPayment.id}}</a></td>
+                    <td>{{recordPayment.pay}}</td>
+                    <td>{{recordPayment.acceptPayment}}</td>
+                    <td>
+                        <a ui-sref="card-detail({id:recordPayment.card.id})">{{recordPayment.card.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="record-detail({id:recordPayment.record.id})">{{recordPayment.record.id}}</a>
+                    </td>
+                    <td>
+                        {{recordPayment.user.id}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="record-payment-detail({id:recordPayment.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="record-payment.edit({id:recordPayment.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="record-payment.delete({id:recordPayment.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

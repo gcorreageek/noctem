@@ -1,0 +1,10 @@
+{
+    "noctemApp": {
+        "TypeEvent" : {
+            "null": "",
+            "LIST": "LIST",
+            "PARTY": "PARTY",
+            "EVENTS": "EVENTS"
+        }
+    }
+}

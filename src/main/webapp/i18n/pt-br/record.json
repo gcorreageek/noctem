@@ -1,0 +1,27 @@
+{
+    "noctemApp": {
+        "record" : {
+            "home": {
+                "title": "Records",
+                "createLabel": "Criar novo Record",
+                "createOrEditLabel": "Criar ou editar Record",
+                "search": "Pesquisar por Record"
+            },
+            "created": "Um novo Record é criado com o identificador {{ param }}",
+            "updated": "Um Record é atualizado com o identificador {{ param }}",
+            "deleted": "Um Record é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Record {{ id }}?"
+            },
+            "detail": {
+                "title": "Record"
+            },
+            "name": "Name",
+            "date": "Date",
+            "total": "Total",
+            "recordItem": "Record Item",
+            "recordPayment": "Record Payment",
+            "user": "User"
+        }
+    }
+}
