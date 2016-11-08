@@ -28,8 +28,16 @@
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
-        <div class="form-group">
-            <table>
+        <div class="table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th><span data-translate="noctemApp.groups.name">Name</span></th>
+                    <th><span data-translate="noctemApp.groups.email">Email</span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
                 <tr ng-repeat="ug in vm.userGroups track by $index" >
                     <td><input  class="form-control" ng-model="ug.name"  required ></td>
                     <td><input type="email" class="form-control" ng-model="ug.email" required ></td>
@@ -39,6 +47,7 @@
                         </button>
                     </td>
                 </tr>
+                </tbody>
             </table>
         </div>
 

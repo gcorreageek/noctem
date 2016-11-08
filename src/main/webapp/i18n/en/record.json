@@ -17,6 +17,9 @@
                 "title": "Record"
             },
             "name": "Name",
+            "description": "Description",
+            "quantity": "Quantity",
+            "price": "Price",
             "date": "Date",
             "total": "Total",
             "recordItem": "Record Item",

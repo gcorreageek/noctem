@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/user-group',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_EMPLOYEE','ROLE_ADMIN','ROLE_SUPERADMIN'],
                 pageTitle: 'noctemApp.userGroup.home.title'
             },
             views: {
@@ -35,7 +35,7 @@
             parent: 'entity',
             url: '/user-group/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_EMPLOYEE','ROLE_ADMIN','ROLE_SUPERADMIN'],
                 pageTitle: 'noctemApp.userGroup.detail.title'
             },
             views: {
@@ -67,7 +67,7 @@
             parent: 'user-group-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_EMPLOYEE','ROLE_ADMIN','ROLE_SUPERADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -92,7 +92,7 @@
             parent: 'user-group',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_EMPLOYEE','ROLE_ADMIN','ROLE_SUPERADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -121,7 +121,7 @@
             parent: 'user-group',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_EMPLOYEE','ROLE_ADMIN','ROLE_SUPERADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -146,7 +146,7 @@
             parent: 'user-group',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_EMPLOYEE','ROLE_ADMIN','ROLE_SUPERADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

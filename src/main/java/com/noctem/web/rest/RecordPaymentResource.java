@@ -27,7 +27,7 @@ import java.util.Optional;
 public class RecordPaymentResource {
 
     private final Logger log = LoggerFactory.getLogger(RecordPaymentResource.class);
-        
+
     @Inject
     private RecordPaymentService recordPaymentService;
 
@@ -86,9 +86,9 @@ public class RecordPaymentResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<RecordPayment> getAllRecordPayments() {
+    public List<RecordPayment> getAllRecordPaymentsByAuthority() {
         log.debug("REST request to get all RecordPayments");
-        return recordPaymentService.findAll();
+        return recordPaymentService.findAllByAuthority();
     }
 
     /**

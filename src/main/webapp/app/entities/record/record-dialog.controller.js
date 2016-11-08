@@ -15,14 +15,20 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        // vm.recorditems = RecordItem.query();
-        // vm.recordpayments = RecordPayment.query();
-        // vm.users = User.query();
         vm.add  = function () {
             vm.recordItems.push({description:'',quantity:null,price:null,total:null});
         };
         vm.delete  = function ( index) {
             vm.recordItems.splice(index,1);
+        };
+        vm.change  = function () {
+            var sumTotal = 0;
+            for (var i = 0; i < vm.recordItems.length; i++) {
+                var item = vm.recordItems[i];
+                item.total =  item.quantity*item.price;
+                sumTotal = item.total + sumTotal;
+            }
+            vm.record.total = sumTotal;
         };
         RecordItem.query({idrecord: vm.record.id}, function(result) {
             vm.recordItems = result;

@@ -15,4 +15,7 @@ public interface RecordPaymentRepository extends JpaRepository<RecordPayment,Lon
     @Query("select recordPayment from RecordPayment recordPayment where recordPayment.user.login = ?#{principal.username}")
     List<RecordPayment> findByUserIsCurrentUser();
 
+    @Query("select recordPayment from RecordPayment recordPayment where recordPayment.record.user.login = ?#{principal.username}")
+    List<RecordPayment> findByNotUserIsCurrentUser();
+
 }

@@ -36,6 +36,10 @@
 
         function save () {
             vm.isSaving = true;
+            console.log(vm.user);
+            if(vm.user.authorities.length>1){
+                return;
+            }
             if (vm.user.id !== null) {
                 User.update(vm.user, onSaveSuccess, onSaveError);
             } else {

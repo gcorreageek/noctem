@@ -13,7 +13,7 @@
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.recordPayment.id" readonly />
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-if="vm.account.authorities[0]!='ROLE_USER'" >
             <label class="control-label" data-translate="noctemApp.recordPayment.pay" for="field_pay">Pay</label>
             <input type="number" class="form-control" name="pay" id="field_pay"
                     ng-model="vm.recordPayment.pay"
@@ -29,7 +29,7 @@
                 </p>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-if="vm.account.authorities[0]=='ROLE_USER'">
             <label class="control-label" data-translate="noctemApp.recordPayment.acceptPayment" for="field_acceptPayment">Accept Payment</label>
             <input type="checkbox" class="form-control" name="acceptPayment" id="field_acceptPayment"
                     ng-model="vm.recordPayment.acceptPayment"
@@ -42,21 +42,21 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group"  ng-if="vm.account.authorities[0]=='ROLE_USER'" >
             <label data-translate="noctemApp.recordPayment.card" for="field_card">Card</label>
-            <select class="form-control" id="field_card" name="card" ng-model="vm.recordPayment.card" ng-options="card as card.id for card in vm.cards track by card.id">
+            <select class="form-control" id="field_card" name="card" ng-model="vm.recordPayment.card" ng-options="card as card.name for card in vm.cards track by card.id">
                 <option value=""></option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-if="vm.account.authorities[0]!='ROLE_USER'" >
             <label data-translate="noctemApp.recordPayment.record" for="field_record">Record</label>
-            <select class="form-control" id="field_record" name="record" ng-model="vm.recordPayment.record" ng-options="record as record.id for record in vm.records track by record.id">
+            <select class="form-control" id="field_record" name="record" ng-model="vm.recordPayment.record" ng-options="record as record.name for record in vm.records track by record.id">
                 <option value=""></option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-if="vm.account.authorities[0]!='ROLE_USER'" >
             <label data-translate="noctemApp.recordPayment.user" for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.recordPayment.user" ng-options="user as user.id for user in vm.users track by user.id">
+            <select class="form-control" id="field_user" name="user" ng-model="vm.recordPayment.user" ng-options="user as user.login for user in vm.users track by user.id">
                 <option value=""></option>
             </select>
         </div>

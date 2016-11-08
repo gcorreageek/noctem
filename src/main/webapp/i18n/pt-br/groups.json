@@ -17,6 +17,7 @@
                 "title": "Groups"
             },
             "name": "Name",
+            "email": "Email",
             "userGroup": "User Group",
             "notification": "Notification",
             "user": "User"

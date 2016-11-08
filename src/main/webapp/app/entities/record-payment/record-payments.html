@@ -1,7 +1,7 @@
 <div>
     <h2 data-translate="noctemApp.recordPayment.home.title">Record Payments</h2>
     <jhi-alert></jhi-alert>
-    <div class="container-fluid">
+    <div class="container-fluid"   ng-if="vm.account.authorities[0]!='ROLE_USER'" >
         <div class="row">
             <div class="col-xs-4 no-padding-left">
                 <button class="btn btn-primary" ui-sref="record-payment.new" >
@@ -33,19 +33,19 @@
                     <td>{{recordPayment.pay}}</td>
                     <td>{{recordPayment.acceptPayment}}</td>
                     <td>
-                        <a ui-sref="card-detail({id:recordPayment.card.id})">{{recordPayment.card.id}}</a>
+                        <a ui-sref="card-detail({id:recordPayment.card.id})">{{recordPayment.card.name}}</a>
                     </td>
                     <td>
-                        <a ui-sref="record-detail({id:recordPayment.record.id})">{{recordPayment.record.id}}</a>
+                        <a ui-sref="record-detail({id:recordPayment.record.id})">{{recordPayment.record.name}}</a>
                     </td>
                     <td>
-                        {{recordPayment.user.id}}
+                        {{recordPayment.user.login}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
                                     ui-sref="record-payment-detail({id:recordPayment.id})"
-                                    class="btn btn-info btn-sm">
+                                    class="btn btn-info btn-sm" >
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
                             </button>
@@ -57,7 +57,7 @@
                             </button>
                             <button type="submit"
                                     ui-sref="record-payment.delete({id:recordPayment.id})"
-                                    class="btn btn-danger btn-sm">
+                                    class="btn btn-danger btn-sm" ng-if="vm.account.authorities[0]!='ROLE_USER'"  >
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
                             </button>

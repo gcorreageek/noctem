@@ -12,10 +12,34 @@
         <dd>
             <span>{{vm.record.date | date:'medium'}}</span>
         </dd>
+        <dt></dt>
+        <dd>
+            <div class="table-responsive">
+                <table class="jh-table table table-striped" >
+                    <thead>
+                    <tr>
+                        <th><span data-translate="noctemApp.record.description">Description</span></th>
+                        <th><span data-translate="noctemApp.record.quantity">Quantity</span></th>
+                        <th><span data-translate="noctemApp.record.price">Price</span></th>
+                        <th><span data-translate="noctemApp.record.total">Total</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="ri in vm.recordItems track by $index" >
+                        <td><input  class="form-control" ng-model="ri.description"  ng-disabled="true" ></td>
+                        <td><input  type="number" class="form-control" ng-model="ri.quantity"  ng-disabled="true" ></td>
+                        <td><input  type="number" class="form-control" ng-model="ri.price"  ng-disabled="true" ></td>
+                        <td><input  type="number" class="form-control" ng-model="ri.total"  ng-disabled="true" ></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </dd>
         <dt><span data-translate="noctemApp.record.total">Total</span></dt>
         <dd>
             <span>{{vm.record.total}}</span>
         </dd>
+
     </dl>
 
     <button type="submit"
@@ -24,7 +48,7 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button" ui-sref="record-detail.edit({id:vm.record.id})" class="btn btn-primary">
+    <button type="button" ui-sref="record-detail.edit({id:vm.record.id})" class="btn btn-primary" ng-if="vm.account.authorities[0]!='ROLE_USER'" >
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
     </button>

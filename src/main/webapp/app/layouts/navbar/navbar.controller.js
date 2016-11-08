@@ -44,9 +44,6 @@
         }
         Principal.identity().then(function(account) {
             vm.account = account;
-            // for (var i = 0; i < vm.account.authorities.length; i++) {
-            //     if(vm.account.authorities[0]=='')
-            // }
         });
     }
 })();

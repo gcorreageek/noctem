@@ -5,11 +5,11 @@
         .module('noctemApp')
         .controller('RecordPaymentController', RecordPaymentController);
 
-    RecordPaymentController.$inject = ['$scope', '$state', 'RecordPayment'];
+    RecordPaymentController.$inject = ['$scope', '$state', 'RecordPayment','Principal'];
 
-    function RecordPaymentController ($scope, $state, RecordPayment) {
+    function RecordPaymentController ($scope, $state, RecordPayment,Principal) {
         var vm = this;
-        
+
         vm.recordPayments = [];
 
         loadAll();
@@ -19,5 +19,9 @@
                 vm.recordPayments = result;
             });
         }
+        Principal.identity().then(function(account) {
+            vm.account = account;
+        });
+
     }
 })();
