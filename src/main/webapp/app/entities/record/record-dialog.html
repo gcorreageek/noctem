@@ -24,6 +24,24 @@
                     This field is required.
                 </p>
             </div>
+            <button type="button" class="btn btn-default"  ng-click="vm.add();">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+        <div class="form-group">
+            <table>
+                <tr ng-repeat="ri in vm.recordItems track by $index" >
+                    <td><input  class="form-control" ng-model="ri.description"  required ></td>
+                    <td><input  type="number" class="form-control" ng-model="ri.quantity" required ></td>
+                    <td><input  type="number" class="form-control" ng-model="ri.price" required ></td>
+                    <td><input  type="number" class="form-control" ng-model="ri.total" required ></td>
+                    <td>
+                        <button type="button" class="btn btn-default"  ng-click="vm.delete($index);">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
         </div>
 
 

@@ -1,6 +1,7 @@
 package com.noctem.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -35,8 +36,8 @@ public class Record implements Serializable {
     @Column(name = "total", nullable = false)
     private Double total;
 
-    @OneToMany(mappedBy = "record")
-    @JsonIgnore
+    @OneToMany(mappedBy = "record", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @JsonIgnoreProperties({"record"})
     private Set<RecordItem> recordItems = new HashSet<>();
 
     @OneToMany(mappedBy = "record")

@@ -2,6 +2,7 @@ package com.noctem.repository;
 
 import com.noctem.domain.RecordItem;
 
+import com.noctem.domain.UserGroup;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -11,5 +12,5 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface RecordItemRepository extends JpaRepository<RecordItem,Long> {
-
+    List<RecordItem> findByRecordId(Long idRecord);
 }

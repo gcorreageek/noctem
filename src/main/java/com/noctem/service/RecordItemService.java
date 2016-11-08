@@ -18,28 +18,16 @@ import java.util.List;
 public class RecordItemService {
 
     private final Logger log = LoggerFactory.getLogger(RecordItemService.class);
-    
+
     @Inject
     private RecordItemRepository recordItemRepository;
-
-    /**
-     * Save a recordItem.
-     *
-     * @param recordItem the entity to save
-     * @return the persisted entity
-     */
     public RecordItem save(RecordItem recordItem) {
         log.debug("Request to save RecordItem : {}", recordItem);
         RecordItem result = recordItemRepository.save(recordItem);
         return result;
     }
 
-    /**
-     *  Get all the recordItems.
-     *  
-     *  @return the list of entities
-     */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<RecordItem> findAll() {
         log.debug("Request to get all RecordItems");
         List<RecordItem> result = recordItemRepository.findAll();
@@ -47,24 +35,20 @@ public class RecordItemService {
         return result;
     }
 
-    /**
-     *  Get one recordItem by id.
-     *
-     *  @param id the id of the entity
-     *  @return the entity
-     */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
+    public List<RecordItem> findByRecordId(Long idRecord) {
+        log.debug("Request to get all findByRecordId");
+        List<RecordItem> result = recordItemRepository.findByRecordId(idRecord);
+        return result;
+    }
+
+    @Transactional(readOnly = true)
     public RecordItem findOne(Long id) {
         log.debug("Request to get RecordItem : {}", id);
         RecordItem recordItem = recordItemRepository.findOne(id);
         return recordItem;
     }
 
-    /**
-     *  Delete the  recordItem by id.
-     *
-     *  @param id the id of the entity
-     */
     public void delete(Long id) {
         log.debug("Request to delete RecordItem : {}", id);
         recordItemRepository.delete(id);

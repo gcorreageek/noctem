@@ -15,9 +15,18 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.recorditems = RecordItem.query();
-        vm.recordpayments = RecordPayment.query();
-        vm.users = User.query();
+        // vm.recorditems = RecordItem.query();
+        // vm.recordpayments = RecordPayment.query();
+        // vm.users = User.query();
+        vm.add  = function () {
+            vm.recordItems.push({description:'',quantity:null,price:null,total:null});
+        };
+        vm.delete  = function ( index) {
+            vm.recordItems.splice(index,1);
+        };
+        RecordItem.query({idrecord: vm.record.id}, function(result) {
+            vm.recordItems = result;
+        });
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -29,11 +38,13 @@
 
         function save () {
             vm.isSaving = true;
+            vm.record.recordItems = vm.recordItems;
             if (vm.record.id !== null) {
                 console.log(vm.record);
                 Record.update(vm.record, onSaveSuccess, onSaveError);
             } else {
                 vm.record.date = new Date();
+                console.log(vm.record);
                 Record.save(vm.record, onSaveSuccess, onSaveError);
             }
         }

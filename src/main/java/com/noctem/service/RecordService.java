@@ -1,6 +1,8 @@
 package com.noctem.service;
 
 import com.noctem.domain.Record;
+import com.noctem.domain.RecordItem;
+import com.noctem.repository.RecordItemRepository;
 import com.noctem.repository.RecordRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +32,9 @@ public class RecordService {
      */
     public Record save(Record record) {
         log.debug("Request to save Record : {}", record);
+        for (RecordItem ri : record.getRecordItems()) {
+            ri.setRecord(record);
+        }
         Record result = recordRepository.save(record);
         return result;
     }

@@ -2,6 +2,7 @@ package com.noctem.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.noctem.domain.RecordItem;
+import com.noctem.domain.UserGroup;
 import com.noctem.service.RecordItemService;
 import com.noctem.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ import java.util.Optional;
 public class RecordItemResource {
 
     private final Logger log = LoggerFactory.getLogger(RecordItemResource.class);
-        
+
     @Inject
     private RecordItemService recordItemService;
 
@@ -77,18 +78,20 @@ public class RecordItemResource {
             .body(result);
     }
 
-    /**
-     * GET  /record-items : get all the recordItems.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of recordItems in body
-     */
-    @RequestMapping(value = "/record-items",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+
+//    @RequestMapping(value = "/record-items",
+//        method = RequestMethod.GET,
+//        produces = MediaType.APPLICATION_JSON_VALUE)
+//    @Timed
+//    public List<RecordItem> getAllRecordItems() {
+//        log.debug("REST request to get all RecordItems");
+//        return recordItemService.findAll();
+//    }
+    @RequestMapping(value = "/record-items", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<RecordItem> getAllRecordItems() {
-        log.debug("REST request to get all RecordItems");
-        return recordItemService.findAll();
+    public List<RecordItem> getAllRecordItemsByRecordId(@RequestParam(value = "idrecord", required = false) Long idrecord) {
+        log.debug("idRecord:"+idrecord);
+        return recordItemService.findByRecordId(idrecord);
     }
 
     /**
