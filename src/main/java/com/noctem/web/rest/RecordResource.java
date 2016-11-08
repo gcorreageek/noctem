@@ -27,7 +27,7 @@ import java.util.Optional;
 public class RecordResource {
 
     private final Logger log = LoggerFactory.getLogger(RecordResource.class);
-        
+
     @Inject
     private RecordService recordService;
 
@@ -86,9 +86,9 @@ public class RecordResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Record> getAllRecords() {
+    public List<Record> getAllRecordsByUserIsCurrentUser() {
         log.debug("REST request to get all Records");
-        return recordService.findAll();
+        return recordService.findByUserIsCurrentUser();
     }
 
     /**

@@ -5,9 +5,9 @@
         .module('noctemApp')
         .controller('NotificationDialogController', NotificationDialogController);
 
-    NotificationDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Notification', 'Groups', 'Event', 'User'];
+    NotificationDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Notification', 'Groups', 'Event', 'User','Principal'];
 
-    function NotificationDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Notification, Groups, Event, User) {
+    function NotificationDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Notification, Groups, Event, User,Principal) {
         var vm = this;
 
         vm.notification = entity;
@@ -43,7 +43,11 @@
         function onSaveError () {
             vm.isSaving = false;
         }
-
+        Principal.identity().then(function(account) {
+            User.get({login: account.login}, function(result) {
+                vm.notification.user =result;
+            });
+        });
 
     }
 })();

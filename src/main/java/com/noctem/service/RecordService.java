@@ -18,7 +18,7 @@ import java.util.List;
 public class RecordService {
 
     private final Logger log = LoggerFactory.getLogger(RecordService.class);
-    
+
     @Inject
     private RecordRepository recordRepository;
 
@@ -36,13 +36,13 @@ public class RecordService {
 
     /**
      *  Get all the records.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
-    public List<Record> findAll() {
+    @Transactional(readOnly = true)
+    public List<Record> findByUserIsCurrentUser() {
         log.debug("Request to get all Records");
-        List<Record> result = recordRepository.findAll();
+        List<Record> result = recordRepository.findByUserIsCurrentUser();
 
         return result;
     }
@@ -53,7 +53,7 @@ public class RecordService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Record findOne(Long id) {
         log.debug("Request to get Record : {}", id);
         Record record = recordRepository.findOne(id);

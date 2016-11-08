@@ -27,7 +27,7 @@ import java.util.Optional;
 public class CardResource {
 
     private final Logger log = LoggerFactory.getLogger(CardResource.class);
-        
+
     @Inject
     private CardService cardService;
 
@@ -86,9 +86,9 @@ public class CardResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Card> getAllCards() {
+    public List<Card> getAllByUserIsCurrentUser() {
         log.debug("REST request to get all Cards");
-        return cardService.findAll();
+        return cardService.findByUserIsCurrentUser();
     }
 
     /**

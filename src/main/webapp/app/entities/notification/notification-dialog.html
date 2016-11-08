@@ -13,7 +13,7 @@
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.notification.id" readonly />
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-if="false" >
             <label class="control-label" data-translate="noctemApp.notification.send" for="field_send">Send</label>
             <input type="checkbox" class="form-control" name="send" id="field_send"
                     ng-model="vm.notification.send"
@@ -28,22 +28,22 @@
 
         <div class="form-group">
             <label data-translate="noctemApp.notification.groups" for="field_groups">Groups</label>
-            <select class="form-control" id="field_groups" name="groups" ng-model="vm.notification.groups" ng-options="groups as groups.id for groups in vm.groups track by groups.id">
+            <select class="form-control" id="field_groups" name="groups" ng-model="vm.notification.groups" ng-options="groups as groups.name for groups in vm.groups track by groups.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="noctemApp.notification.event" for="field_event">Event</label>
-            <select class="form-control" id="field_event" name="event" ng-model="vm.notification.event" ng-options="event as event.id for event in vm.events track by event.id">
+            <select class="form-control" id="field_event" name="event" ng-model="vm.notification.event" ng-options="event as event.name for event in vm.events track by event.id">
                 <option value=""></option>
             </select>
         </div>
-        <div class="form-group">
-            <label data-translate="noctemApp.notification.user" for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.notification.user" ng-options="user as user.id for user in vm.users track by user.id">
-                <option value=""></option>
-            </select>
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label data-translate="noctemApp.notification.user" for="field_user">User</label>-->
+            <!--<select class="form-control" id="field_user" name="user" ng-model="vm.notification.user" ng-options="user as user.id for user in vm.users track by user.id">-->
+                <!--<option value=""></option>-->
+            <!--</select>-->
+        <!--</div>-->
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

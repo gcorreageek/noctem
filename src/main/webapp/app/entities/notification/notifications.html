@@ -29,16 +29,21 @@
             <tbody>
                 <tr ng-repeat="notification in vm.notifications track by notification.id">
                     <td><a ui-sref="notification-detail({id:notification.id})">{{notification.id}}</a></td>
-                    <td>{{notification.send}}</td>
                     <td>
-                        <a ui-sref="groups-detail({id:notification.groups.id})">{{notification.groups.id}}</a>
+                        <span class="label label-danger" ng-click="vm.setActive(notification, true  )" ng-show="!notification.send"
+                              data-translate="noctemApp.notification.sendMissing" style="cursor: pointer;">Missing Send</span>
+                        <span class="label label-success" ng-click="vm.setActive(notification, false )" ng-show="notification.send"
+                              data-translate="noctemApp.notification.sendAlready" style="cursor: pointer;">Already Send</span>
                     </td>
                     <td>
-                        <a ui-sref="event-detail({id:notification.event.id})">{{notification.event.id}}</a>
+                        <a ui-sref="groups-detail({id:notification.groups.id})">{{notification.groups.name}}</a>
                     </td>
                     <td>
-                        {{notification.user.id}}
+                        <a ui-sref="event-detail({id:notification.event.id})">{{notification.event.name}}</a>
                     </td>
+                    <!--<td>-->
+                        <!--{{notification.user.id}}-->
+                    <!--</td>-->
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -49,14 +54,14 @@
                             </button>
                             <button type="submit"
                                     ui-sref="notification.edit({id:notification.id})"
-                                    class="btn btn-primary btn-sm">
+                                    class="btn btn-primary btn-sm"    ng-disabled="notification.send" >
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="notification.delete({id:notification.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                    class="btn btn-danger btn-sm"  ng-disabled="notification.send" >
+                                <span class="glyphicon glyphicon-remove-circle"  ></span>
                                 <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
                             </button>
                         </div>

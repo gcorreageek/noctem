@@ -17,6 +17,9 @@
                 "title": "Notification"
             },
             "send": "Send",
+            "sendMissing": "Faltando enviar",
+            "sendAlready": "Já enviado",
+            "sendAlreadyAlert": "Você não pode desativar o processo de notificação",
             "groups": "Groups",
             "event": "Event",
             "user": "User"

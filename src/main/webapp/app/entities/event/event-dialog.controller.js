@@ -5,9 +5,9 @@
         .module('noctemApp')
         .controller('EventDialogController', EventDialogController);
 
-    EventDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Event', 'Notification', 'User'];
+    EventDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Event', 'Notification', 'User','Principal'];
 
-    function EventDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Event, Notification, User) {
+    function EventDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Event, Notification, User,Principal) {
         var vm = this;
 
         vm.event = entity;
@@ -50,5 +50,10 @@
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
         }
+        Principal.identity().then(function(account) {
+            User.get({login: account.login}, function(result) {
+                vm.event.user =result;
+            });
+        });
     }
 })();

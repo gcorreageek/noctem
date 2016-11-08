@@ -14,19 +14,14 @@
         vm.clear = clear;
         vm.save = save;
         vm.add  = function () {
-            console.log('add');
             vm.userGroups.push({name:'',email:''});
+        };
+        vm.delete  = function ( index) {
+            vm.userGroups.splice(index,1);
         };
         UserGroup.query({idgroups: vm.groups.id}, function(result) {
             vm.userGroups = result;
-            console.log(result);
         });
-
-
-
-
-        vm.notifications = Notification.query();
-        vm.users = User.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -39,17 +34,7 @@
 
         function save () {
             vm.isSaving = true;
-            console.log(vm.groups);
-            console.log(vm.userGroups);
-
-
-            // vm.userGroups = [];
-            // vm.userGroups[0] = {id:22,name:'gustavito',email:'gustvito@gmai.com',groups:null};
-            // vm.groups.userGroups = vm.userGroups;
             vm.groups.userGroups = vm.userGroups;
-            // vm.groups.userGroups = [{id:1,name:'gustavito',email:'gustvito@gmai.com',groups:{id:19}}];
-            console.log(vm.groups);
-
             if (vm.groups.id !== null) {
                 Groups.update(vm.groups, onSaveSuccess, onSaveError);
             } else {

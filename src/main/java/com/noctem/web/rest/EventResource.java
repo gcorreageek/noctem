@@ -27,7 +27,7 @@ import java.util.Optional;
 public class EventResource {
 
     private final Logger log = LoggerFactory.getLogger(EventResource.class);
-        
+
     @Inject
     private EventService eventService;
 
@@ -86,9 +86,9 @@ public class EventResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Event> getAllEvents() {
+    public List<Event> getAllEventsByUserIsCurrentUser() {
         log.debug("REST request to get all Events");
-        return eventService.findAll();
+        return eventService.findByUserIsCurrentUser();
     }
 
     /**

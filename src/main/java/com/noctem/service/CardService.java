@@ -18,7 +18,7 @@ import java.util.List;
 public class CardService {
 
     private final Logger log = LoggerFactory.getLogger(CardService.class);
-    
+
     @Inject
     private CardRepository cardRepository;
 
@@ -36,13 +36,13 @@ public class CardService {
 
     /**
      *  Get all the cards.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
-    public List<Card> findAll() {
-        log.debug("Request to get all Cards");
-        List<Card> result = cardRepository.findAll();
+    @Transactional(readOnly = true)
+    public List<Card> findByUserIsCurrentUser() {
+        log.debug("Request to get all ByUserIsCurrentUser");
+        List<Card> result = cardRepository.findByUserIsCurrentUser();
 
         return result;
     }
@@ -53,7 +53,7 @@ public class CardService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Card findOne(Long id) {
         log.debug("Request to get Card : {}", id);
         Card card = cardRepository.findOne(id);

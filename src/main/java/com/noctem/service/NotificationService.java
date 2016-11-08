@@ -18,7 +18,7 @@ import java.util.List;
 public class NotificationService {
 
     private final Logger log = LoggerFactory.getLogger(NotificationService.class);
-    
+
     @Inject
     private NotificationRepository notificationRepository;
 
@@ -36,13 +36,13 @@ public class NotificationService {
 
     /**
      *  Get all the notifications.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
-    public List<Notification> findAll() {
+    @Transactional(readOnly = true)
+    public List<Notification> findByUserIsCurrentUser() {
         log.debug("Request to get all Notifications");
-        List<Notification> result = notificationRepository.findAll();
+        List<Notification> result = notificationRepository.findByUserIsCurrentUser();
 
         return result;
     }
@@ -53,7 +53,7 @@ public class NotificationService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Notification findOne(Long id) {
         log.debug("Request to get Notification : {}", id);
         Notification notification = notificationRepository.findOne(id);

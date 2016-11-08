@@ -24,7 +24,6 @@
                     <th><span data-translate="noctemApp.event.date">Date</span></th>
                     <th><span data-translate="noctemApp.event.subject">Subject</span></th>
                     <th><span data-translate="noctemApp.event.message">Message</span></th>
-                    <th><span data-translate="noctemApp.event.user">User</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -36,9 +35,6 @@
                     <td>{{event.date | date:'medium'}}</td>
                     <td>{{event.subject}}</td>
                     <td>{{event.message}}</td>
-                    <td>
-                        {{event.user.id}}
-                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

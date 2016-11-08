@@ -17,6 +17,9 @@
                 "title": "Notification"
             },
             "send": "Send",
+            "sendMissing": "Missing Send",
+            "sendAlready": "Already Send",
+            "sendAlreadyAlert": "Can not turn off notification process",
             "groups": "Groups",
             "event": "Event",
             "user": "User"

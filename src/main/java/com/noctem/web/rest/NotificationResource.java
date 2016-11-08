@@ -27,7 +27,7 @@ import java.util.Optional;
 public class NotificationResource {
 
     private final Logger log = LoggerFactory.getLogger(NotificationResource.class);
-        
+
     @Inject
     private NotificationService notificationService;
 
@@ -86,9 +86,9 @@ public class NotificationResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Notification> getAllNotifications() {
-        log.debug("REST request to get all Notifications");
-        return notificationService.findAll();
+    public List<Notification> getAllNotificationsByUserIsCurrentUser() {
+        log.debug("REST request to get all ByUserIsCurrentUser");
+        return notificationService.findByUserIsCurrentUser();
     }
 
     /**

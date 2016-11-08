@@ -5,9 +5,9 @@
         .module('noctemApp')
         .controller('RecordDialogController', RecordDialogController);
 
-    RecordDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Record', 'RecordItem', 'RecordPayment', 'User'];
+    RecordDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Record', 'RecordItem', 'RecordPayment', 'User','Principal'];
 
-    function RecordDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Record, RecordItem, RecordPayment, User) {
+    function RecordDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Record, RecordItem, RecordPayment, User,Principal) {
         var vm = this;
 
         vm.record = entity;
@@ -30,8 +30,10 @@
         function save () {
             vm.isSaving = true;
             if (vm.record.id !== null) {
+                console.log(vm.record);
                 Record.update(vm.record, onSaveSuccess, onSaveError);
             } else {
+                vm.record.date = new Date();
                 Record.save(vm.record, onSaveSuccess, onSaveError);
             }
         }
@@ -51,5 +53,10 @@
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
         }
+        Principal.identity().then(function(account) {
+            User.get({login: account.login}, function(result) {
+                vm.record.user =result;
+            });
+        });
     }
 })();

@@ -18,7 +18,7 @@ import java.util.List;
 public class EventService {
 
     private final Logger log = LoggerFactory.getLogger(EventService.class);
-    
+
     @Inject
     private EventRepository eventRepository;
 
@@ -36,14 +36,20 @@ public class EventService {
 
     /**
      *  Get all the events.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<Event> findAll() {
         log.debug("Request to get all Events");
         List<Event> result = eventRepository.findAll();
 
+        return result;
+    }
+    @Transactional(readOnly = true)
+    public List<Event> findByUserIsCurrentUser() {
+        log.debug("Request to get all findByUserIsCurrentUser");
+        List<Event> result = eventRepository.findByUserIsCurrentUser();
         return result;
     }
 
@@ -53,7 +59,7 @@ public class EventService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Event findOne(Long id) {
         log.debug("Request to get Event : {}", id);
         Event event = eventRepository.findOne(id);

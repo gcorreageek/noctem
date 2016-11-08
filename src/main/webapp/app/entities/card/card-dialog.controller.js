@@ -5,9 +5,9 @@
         .module('noctemApp')
         .controller('CardDialogController', CardDialogController);
 
-    CardDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Card', 'RecordPayment', 'User'];
+    CardDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Card', 'RecordPayment', 'User','Principal'];
 
-    function CardDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Card, RecordPayment, User) {
+    function CardDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Card, RecordPayment, User,Principal) {
         var vm = this;
 
         vm.card = entity;
@@ -42,7 +42,11 @@
         function onSaveError () {
             vm.isSaving = false;
         }
-
+        Principal.identity().then(function(account) {
+            User.get({login: account.login}, function(result) {
+                vm.card.user =result;
+            });
+        });
 
     }
 })();

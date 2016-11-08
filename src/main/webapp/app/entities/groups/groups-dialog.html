@@ -33,9 +33,14 @@
         </div>
         <div class="form-group">
             <table>
-                <tr ng-repeat="ug in vm.userGroups" >
-                    <td><input  class="form-control" ng-model="ug.name" ></td>
-                    <td><input  class="form-control" ng-model="ug.email" ></td>
+                <tr ng-repeat="ug in vm.userGroups track by $index" >
+                    <td><input  class="form-control" ng-model="ug.name"  required ></td>
+                    <td><input type="email" class="form-control" ng-model="ug.email" required ></td>
+                    <td>
+                        <button type="button" class="btn btn-default"  ng-click="vm.delete($index);">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </td>
                 </tr>
             </table>
         </div>
