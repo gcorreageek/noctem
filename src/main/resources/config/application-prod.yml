@@ -20,9 +20,9 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/noctem?useUnicode=true&characterEncoding=utf8&useSSL=false
-        name:
+        name: noctem
         username: root
-        password:
+        password: mysql
         hikari:
             data-source-properties:
                 cachePrepStmts: true
@@ -38,10 +38,16 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: false
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: smtp.gmail.com
+        port: 587
+        username: proy.noctem@gmail.com  #Replace this field with your Gmail username.
+        password: 10203040@           #Replace this field with your Gmail password.
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
     thymeleaf:
         cache: true
 
@@ -70,7 +76,7 @@ jhipster:
                 # Token is valid 24 hours
                 tokenValidityInSeconds: 86400
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: noctem@localhost
+        from: proy.noctem@gmail.com
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         spark:
