@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -47,7 +48,12 @@ public class NotificationResource {
         if (notification.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("notification", "idexists", "A new notification cannot already have an ID")).body(null);
         }
-        Notification result = notificationService.save(notification);
+        Notification result = null;
+        try {
+            result = notificationService.save(notification);
+        } catch (IOException e) {
+            log.error("",e);
+        }
         return ResponseEntity.created(new URI("/api/notifications/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("notification", result.getId().toString()))
             .body(result);
@@ -71,7 +77,12 @@ public class NotificationResource {
         if (notification.getId() == null) {
             return createNotification(notification);
         }
-        Notification result = notificationService.save(notification);
+        Notification result = null;
+        try {
+            result = notificationService.save(notification);
+        } catch (IOException e) {
+            log.error("",e);
+        }
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("notification", notification.getId().toString()))
             .body(result);
