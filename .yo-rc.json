@@ -28,6 +28,7 @@
     "languages": [
       "en",
       "pt-br"
-    ]
+    ],
+    "herokuAppName": "noctem"
   }
 }
