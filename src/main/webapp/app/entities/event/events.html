@@ -34,7 +34,7 @@
                     <td data-translate="{{'noctemApp.TypeEvent.' + event.typeEvent}}">{{event.typeEvent}}</td>
                     <td>{{event.date | date:'medium'}}</td>
                     <td>{{event.subject}}</td>
-                    <td>{{event.message}}</td>
+                    <td><span ng-bind-html="event.message" ></span></td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
