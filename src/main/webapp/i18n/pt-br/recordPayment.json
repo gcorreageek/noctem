@@ -2,25 +2,25 @@
     "noctemApp": {
         "recordPayment" : {
             "home": {
-                "title": "Record Payments",
-                "createLabel": "Criar novo Record Payment",
-                "createOrEditLabel": "Criar ou editar Record Payment",
-                "search": "Pesquisar por Record Payment"
+                "title": "Pagar Comanda",
+                "createLabel": "Criar novo Pagar Comanda",
+                "createOrEditLabel": "Criar ou editar Pagar Comanda",
+                "search": "Pesquisar por Pagar Comanda"
             },
-            "created": "Um novo Record Payment é criado com o identificador {{ param }}",
-            "updated": "Um Record Payment é atualizado com o identificador {{ param }}",
-            "deleted": "Um Record Payment é deletado com o identificador {{ param }}",
+            "created": "Um novo Pagar Comanda é criado com o identificador {{ param }}",
+            "updated": "Um Pagar Comanda é atualizado com o identificador {{ param }}",
+            "deleted": "Um Pagar Comanda é deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Record Payment {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Pagar Comanda {{ id }}?"
             },
             "detail": {
-                "title": "Record Payment"
+                "title": "Pagar Comanda"
             },
-            "pay": "Pay",
-            "acceptPayment": "Accept Payment",
-            "card": "Card",
-            "record": "Record",
-            "user": "User"
+            "pay": "Pagamento",
+            "acceptPayment": "Aceitar Pagamento",
+            "card": "Cartão",
+            "record": "Comanda",
+            "user": "Usuário"
         }
     }
 }

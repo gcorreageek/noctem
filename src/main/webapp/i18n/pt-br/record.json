@@ -2,29 +2,29 @@
     "noctemApp": {
         "record" : {
             "home": {
-                "title": "Records",
-                "createLabel": "Criar novo Record",
-                "createOrEditLabel": "Criar ou editar Record",
-                "search": "Pesquisar por Record"
+                "title": "Comanda",
+                "createLabel": "Criar novo Comanda",
+                "createOrEditLabel": "Criar ou editar Comanda",
+                "search": "Pesquisar por Comanda"
             },
-            "created": "Um novo Record é criado com o identificador {{ param }}",
-            "updated": "Um Record é atualizado com o identificador {{ param }}",
-            "deleted": "Um Record é deletado com o identificador {{ param }}",
+            "created": "Um novo Comanda é criado com o identificador {{ param }}",
+            "updated": "Um Comanda é atualizado com o identificador {{ param }}",
+            "deleted": "Um Comanda é deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Record {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Comanda {{ id }}?"
             },
             "detail": {
-                "title": "Record"
+                "title": "Comanda"
             },
-            "name": "Name",
-            "description": "Description",
-            "quantity": "Quantity",
-            "price": "Price",
-            "date": "Date",
+            "name": "Nome",
+            "description": "Descrição",
+            "quantity": "Quantidade",
+            "price": "Preço",
+            "date": "Data",
             "total": "Total",
-            "recordItem": "Record Item",
-            "recordPayment": "Record Payment",
-            "user": "User"
+            "recordItem": "Comanda Detalhe",
+            "recordPayment": "Pagar Comanda",
+            "user": "Usuário"
         }
     }
 }

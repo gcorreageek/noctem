@@ -2,25 +2,25 @@
     "noctemApp": {
         "groups" : {
             "home": {
-                "title": "Groups",
-                "createLabel": "Criar novo Groups",
-                "createOrEditLabel": "Criar ou editar Groups",
-                "search": "Pesquisar por Groups"
+                "title": "Grupo",
+                "createLabel": "Criar novo Grupo",
+                "createOrEditLabel": "Criar ou editar Grupo",
+                "search": "Pesquisar por Grupo"
             },
-            "created": "Um novo Groups é criado com o identificador {{ param }}",
-            "updated": "Um Groups é atualizado com o identificador {{ param }}",
-            "deleted": "Um Groups é deletado com o identificador {{ param }}",
+            "created": "Um novo Grupo é criado com o identificador {{ param }}",
+            "updated": "Um Grupo é atualizado com o identificador {{ param }}",
+            "deleted": "Um Grupo é deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Groups {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Grupo {{ id }}?"
             },
             "detail": {
-                "title": "Groups"
+                "title": "Grupo"
             },
-            "name": "Name",
+            "name": "Nome",
             "email": "Email",
-            "userGroup": "User Group",
-            "notification": "Notification",
-            "user": "User"
+            "userGroup": "Grupo Usuário",
+            "notification": "Notificação",
+            "user": "Usuário"
         }
     }
 }

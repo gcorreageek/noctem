@@ -2,25 +2,25 @@
     "noctemApp": {
         "card" : {
             "home": {
-                "title": "Cards",
-                "createLabel": "Criar novo Card",
-                "createOrEditLabel": "Criar ou editar Card",
-                "search": "Pesquisar por Card"
+                "title": "Cartão",
+                "createLabel": "Criar novo Cartão",
+                "createOrEditLabel": "Criar ou editar Cartão",
+                "search": "Pesquisar por Cartão"
             },
-            "created": "Um novo Card é criado com o identificador {{ param }}",
-            "updated": "Um Card é atualizado com o identificador {{ param }}",
-            "deleted": "Um Card é deletado com o identificador {{ param }}",
+            "created": "Um novo Cartão é criado com o identificador {{ param }}",
+            "updated": "Um Cartão é atualizado com o identificador {{ param }}",
+            "deleted": "Um Cartão é deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Card {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Cartão {{ id }}?"
             },
             "detail": {
-                "title": "Card"
+                "title": "Cartão"
             },
-            "name": "Name",
-            "typeCard": "Type Card",
-            "number": "Number",
-            "recordPayment": "Record Payment",
-            "user": "User"
+            "name": "Nome",
+            "typeCard": "Tipo Cartão",
+            "number": "Número",
+            "recordPayment": "Pagar Comanda",
+            "user": "Usuário"
         }
     }
 }

@@ -7,14 +7,14 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
-                "groups": "Groups",
-                "userGroup": "User Group",
-                "event": "Event",
-                "notification": "Notification",
-                "card": "Card",
-                "record": "Record",
-                "recordPayment": "Record Payment",
-                "recordItem": "Record Item",
+                "groups": "Grupo",
+                "userGroup": "Group Usuário",
+                "event": "Evento",
+                "notification": "Notificação",
+                "card": "Cartão",
+                "record": "Comanda",
+                "recordPayment": "Pagar Comanda",
+                "recordItem": "Comanda Details",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
